@@ -1,0 +1,57 @@
+# Build outputs
+bin/
+obj/
+Content/bin/
+Content/obj/
+runtimes/
+
+# MonoGame Content Pipeline
+*.mgcb.user
+
+# .NET
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.cache
+*.log
+*.tmp
+*.temp
+*.swp
+*.bak
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# IDEs
+.vs/
+.vscode/*
+# but don't ignore launch.json
+!.vscode/launch.json
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# NuGet
+packages/
+*.nupkg
+
+# Testing
+*.testsettings
+TestResults/
+
+# Miscellaneous
+*.exe
+*.dll
+*.pdb
+*.so
