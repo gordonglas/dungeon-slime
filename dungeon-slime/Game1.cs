@@ -7,9 +7,6 @@ namespace dungeon_slime;
 
 public class Game1 : Core
 {
-    private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
-
     public Game1() : base("Dungeon Slime", 1280, 720, false)
     {
     }
