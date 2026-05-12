@@ -9,6 +9,8 @@ public class Game1 : Core
 {
     // The MonoGame logo texture
     private Texture2D _logo;
+    private float _logoRotationDegrees = 0.0f;
+    private float _logoRotationSpeed = 200.0f;
 
     public Game1() : base("Dungeon Slime", 1280, 720, false)
     {
@@ -39,6 +41,15 @@ public class Game1 : Core
 
         // TODO: Add your update logic here
 
+        // Advance the rotation of the logo.
+        // (Not officially part of the tutorial)
+        _logoRotationDegrees += _logoRotationSpeed *
+                (float)gameTime.ElapsedGameTime.TotalSeconds;
+        if (_logoRotationDegrees >= 360.0f)
+        {
+            _logoRotationDegrees -= 360.0f;
+        }
+
         base.Update(gameTime);
     }
 
@@ -49,8 +60,23 @@ public class Game1 : Core
         // Begin the sprite batch to prepare for rendering.
         SpriteBatch.Begin();
 
-        // Draw the logo texture
-        SpriteBatch.Draw(_logo, Vector2.Zero, Color.White);
+        // Draw the texture with origin center of the logo,
+        // and at position of center of the window (relative to origin field.)
+        SpriteBatch.Draw(
+            _logo,                      // texture
+            new Vector2(                // position
+                Window.ClientBounds.Width,
+                Window.ClientBounds.Height) * 0.5f,
+            null,                       // sourceRectangle
+            Color.White,                // color
+            MathHelper.ToRadians(_logoRotationDegrees),   // rotation
+            new Vector2(                // origin
+                _logo.Width,
+                _logo.Height) * 0.5f,
+            1.0f,                       // scale
+            SpriteEffects.None,         // effects
+            0.0f                        // layerDepth
+        );
 
         // Always end the sprite batch when finished.
         SpriteBatch.End();
