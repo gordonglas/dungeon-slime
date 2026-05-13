@@ -8,7 +8,7 @@ namespace dungeon_slime;
 
 public class Game1 : Core
 {
-    // defines the slime sprite in the atlas.
+    // texture region that defines the slime sprite in the atlas.
     private TextureRegion _slime;
 
     // texture region that defines the bat sprite in the atlas.
@@ -27,27 +27,14 @@ public class Game1 : Core
 
     protected override void LoadContent()
     {
-        // Load the atlas texture using the content manager
-        Texture2D atlasTexture = Content.Load<Texture2D>("images/atlas");
-
-        //  Create a TextureAtlas instance from the atlas
-        TextureAtlas atlas = new TextureAtlas(atlasTexture);
-
-        // add the slime region to the atlas.
-        atlas.AddRegion("slime", 0, 0, 20, 20);
-
-        // add the bat region to the atlas.
-        atlas.AddRegion("bat", 20, 0, 20, 20);
+        // Create the texture atlas from the XML configuration file
+        TextureAtlas atlas = TextureAtlas.FromFile(Content, "images/atlas-definition.xml");
 
         // retrieve the slime region from the atlas.
         _slime = atlas.GetRegion("slime");
 
         // retrieve the bat region from the atlas.
         _bat = atlas.GetRegion("bat");
-
-        // Note that calling base.LoadContent() is not necessary
-        // (but not harmful, since it's a no-op in the Game class)
-        //base.LoadContent();
     }
 
     protected override void Update(GameTime gameTime)
@@ -66,6 +53,7 @@ public class Game1 : Core
 
     protected override void Draw(GameTime gameTime)
     {
+        // Clear the back buffer.
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         // Begin the sprite batch to prepare for rendering.
