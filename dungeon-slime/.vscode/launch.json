@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "C#: dungeon_slime Debug",
+        "name": "C#: DungeonSlime Debug",
         "type": "dotnet",
         "request": "launch",
-        "projectPath": "${workspaceFolder}/dungeon_slime.csproj"
+        "projectPath": "${workspaceFolder}/dungeon-slime.csproj"
       }
     ],
   }
