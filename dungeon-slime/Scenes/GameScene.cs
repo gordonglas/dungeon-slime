@@ -376,12 +376,18 @@ public class GameScene : Scene
             Core.ChangeScene(new TitleScene());
         }
 
-        // If the space key is held down, the movement speed increases by 1.5
         float speed = MOVEMENT_SPEED;
-        if (keyboard.IsKeyDown(Keys.Space))
-        {
-            speed *= 1.5f;
-        }
+        // If the space key is held down, the movement speed increases by 1.5
+        // Removed this, since it's not in the final tutorial's build on itch.io.
+        // AND because it seems to create an artifact sometimes where it
+        // samples the texture just to the left of it. If we wanted to leave this
+        // in, the fix would be to move the slime images away from the font images
+        // in the texture atlas image file, and update the slime Regions in
+        // atlas-definition.xml.
+        //if (keyboard.IsKeyDown(Keys.Space))
+        //{
+        //    speed *= 1.5f;
+        //}
 
         // If the W or Up keys are down, move the slime up on the screen.
         if (keyboard.IsKeyDown(Keys.W) || keyboard.IsKeyDown(Keys.Up))
